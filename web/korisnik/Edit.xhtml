@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="KorisnikEditDlg" widgetVar="KorisnikEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditKorisnikTitle}">
+            <h:form id="KorisnikEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{korisnikController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditKorisnikLabel_idkorisnik}" for="idkorisnik" />
+                        <p:inputText id="idkorisnik" value="#{korisnikController.selected.idkorisnik}" title="#{bundle.EditKorisnikTitle_idkorisnik}" required="true" requiredMessage="#{bundle.EditKorisnikRequiredMessage_idkorisnik}"/>
+                        <p:outputLabel value="#{bundle.EditKorisnikLabel_imekorisnik}" for="imekorisnik" />
+                        <p:inputTextarea rows="4" cols="30" id="imekorisnik" value="#{korisnikController.selected.imekorisnik}" title="#{bundle.EditKorisnikTitle_imekorisnik}" />
+                        <p:outputLabel value="#{bundle.EditKorisnikLabel_prezimekorisnik}" for="prezimekorisnik" />
+                        <p:inputTextarea rows="4" cols="30" id="prezimekorisnik" value="#{korisnikController.selected.prezimekorisnik}" title="#{bundle.EditKorisnikTitle_prezimekorisnik}" />
+                        <p:outputLabel value="#{bundle.EditKorisnikLabel_username}" for="username" />
+                        <p:inputTextarea rows="4" cols="30" id="username" value="#{korisnikController.selected.username}" title="#{bundle.EditKorisnikTitle_username}" />
+                        <p:outputLabel value="#{bundle.EditKorisnikLabel_pass}" for="pass" />
+                        <p:inputTextarea rows="4" cols="30" id="pass" value="#{korisnikController.selected.pass}" title="#{bundle.EditKorisnikTitle_pass}" />
+                        <p:outputLabel value="#{bundle.EditKorisnikLabel_dozvolakorisnik}" for="dozvolakorisnik" />
+                        <p:inputTextarea rows="4" cols="30" id="dozvolakorisnik" value="#{korisnikController.selected.dozvolakorisnik}" title="#{bundle.EditKorisnikTitle_dozvolakorisnik}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{korisnikController.update}" value="#{bundle.Save}" update="display,:KorisnikListForm:datalist,:growl" oncomplete="handleSubmit(args, 'KorisnikEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="KorisnikEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

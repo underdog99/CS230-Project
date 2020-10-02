@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VodenovoziloEditDlg" widgetVar="VodenovoziloEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditVodenovoziloTitle}">
+            <h:form id="VodenovoziloEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vodenovoziloController.selected != null}">
+                        <p:outputLabel value="ID" for="idvodenogvozila" />
+                        <p:inputText id="idvodenogvozila" value="#{vodenovoziloController.selected.idvodenogvozila}" title="#{bundle.EditVodenovoziloTitle_idvodenogvozila}" required="true" requiredMessage="#{bundle.EditVodenovoziloRequiredMessage_idvodenogvozila}"/>
+                        <p:outputLabel value="MARKA" for="markavozila" />
+                        <p:inputText id="markavozila" value="#{vodenovoziloController.selected.markavozila}" title="#{bundle.EditVodenovoziloTitle_markavozila}" />
+                        <p:outputLabel value="MODEL" for="modelvozilo" />
+                        <p:inputText id="modelvozilo" value="#{vodenovoziloController.selected.modelvozilo}" title="#{bundle.EditVodenovoziloTitle_modelvozilo}" />
+                        <p:outputLabel value="SLIKA" for="slikavozilo" />
+                        <p:inputText id="slikavozilo" value="#{vodenovoziloController.selected.slikavozilo}" title="#{bundle.EditVodenovoziloTitle_slikavozilo}" />
+                        <p:outputLabel value="TROSAK" for="trosakservisa" />
+                        <p:inputText id="trosakservisa" value="#{vodenovoziloController.selected.trosakservisa}" title="#{bundle.EditVodenovoziloTitle_trosakservisa}" />
+                        <p:outputLabel value="PRIORITET" for="prioritetvozila" />
+                        <p:inputText id="prioritetvozila" value="#{vodenovoziloController.selected.prioritetvozila}" title="#{bundle.EditVodenovoziloTitle_prioritetvozila}" />
+                        <p:outputLabel value="OPIS" for="opisvozila" />
+                        <p:inputTextarea rows="4" cols="30" id="opisvozila" value="#{vodenovoziloController.selected.opisvozila}" title="#{bundle.EditVodenovoziloTitle_opisvozila}" />
+                        <p:outputLabel value="TROSKOVI GORIVA" for="trosakgoriva" />
+                        <p:inputText id="trosakgoriva" value="#{vodenovoziloController.selected.trosakgoriva}" title="#{bundle.EditVodenovoziloTitle_trosakgoriva}" />
+                        <p:outputLabel value="ISPLATLJIVOST" for="isplatljivostvozila" />
+                        <p:inputText id="isplatljivostvozila" value="#{vodenovoziloController.selected.isplatljivostvozila}" title="#{bundle.EditVodenovoziloTitle_isplatljivostvozila}" />
+                        <p:outputLabel value="BR. MOTORA" for="brmotoravodvozila" />
+                        <p:inputText id="brmotoravodvozila" value="#{vodenovoziloController.selected.brmotoravodvozila}" title="#{bundle.EditVodenovoziloTitle_brmotoravodvozila}" />
+                        <p:outputLabel value="TIP MOTORA" for="tipmotoravodvozila" />
+                        <p:inputText id="tipmotoravodvozila" value="#{vodenovoziloController.selected.tipmotoravodvozila}" title="#{bundle.EditVodenovoziloTitle_tipmotoravodvozila}" />
+                        <p:outputLabel value="SNAGA MOTORA" for="snagamotoravodvozila" />
+                        <p:inputText id="snagamotoravodvozila" value="#{vodenovoziloController.selected.snagamotoravodvozila}" title="#{bundle.EditVodenovoziloTitle_snagamotoravodvozila}" />
+                        <p:outputLabel value="KAPACITET" for="kapacitetvodvozila" />
+                        <p:inputText id="kapacitetvodvozila" value="#{vodenovoziloController.selected.kapacitetvodvozila}" title="#{bundle.EditVodenovoziloTitle_kapacitetvodvozila}" />
+                        <p:outputLabel value="TIP VOZILA" for="tipvodvozila" />
+                        <p:inputText id="tipvodvozila" value="#{vodenovoziloController.selected.tipvodvozila}" title="#{bundle.EditVodenovoziloTitle_tipvodvozila}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{vodenovoziloController.update}" value="#{bundle.Save}" update="display,:VodenovoziloListForm:datalist,:growl" oncomplete="handleSubmit(args, 'VodenovoziloEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VodenovoziloEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

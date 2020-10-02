@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSaradniciTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="SaradniciListForm">
+                <p:panel header="#{bundle.ListSaradniciTitle}">
+                    <p:dataTable id="datalist" value="#{saradniciController.items}" var="item"
+                                 selectionMode="single" selection="#{saradniciController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idclana}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="IME"/>
+                            </f:facet>
+                            <h:outputText value="#{item.imeclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="PREZIME"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prezimeclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="JMBG"/>
+                            </f:facet>
+                            <h:outputText value="#{item.jmbgclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="GODINA RODJENJA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.godinarodjenjaclana}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="MESTO RODJENJA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mestorodjenjaclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="KONTAK"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kontaktclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="VISINA(CM)"/>
+                            </f:facet>
+                            <h:outputText value="#{item.visinaclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="KILAZA(KG)"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kilazaclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="BOJA OCIU"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bojaociuclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="FOTO"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fotoclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="OTISAK"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otisakprstaclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="STATUS"/>
+                            </f:facet>
+                            <h:outputText value="#{item.statusclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="PLATA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.plataclana}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID SARADNIKA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idsaradnika}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="OBLAST"/>
+                            </f:facet>
+                            <h:outputText value="#{item.oblast}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{saradniciController.prepareCreate}" update=":SaradniciCreateForm" oncomplete="PF('SaradniciCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SaradniciViewForm" oncomplete="PF('SaradniciViewDialog').show()" disabled="#{empty saradniciController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SaradniciEditForm" oncomplete="PF('SaradniciEditDialog').show()" disabled="#{empty saradniciController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{saradniciController.destroy}" update=":growl,datalist" disabled="#{empty saradniciController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

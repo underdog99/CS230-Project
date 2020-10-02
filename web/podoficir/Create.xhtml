@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PodoficirCreateDlg" widgetVar="PodoficirCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePodoficirTitle}">
+            <h:form id="PodoficirCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{podoficirController.selected != null}">
+                        <p:outputLabel value="ID" for="idpodoficir" />
+                        <p:inputText id="idpodoficir" value="#{podoficirController.selected.idpodoficir}" title="#{bundle.CreatePodoficirTitle_idpodoficir}" required="true" requiredMessage="#{bundle.CreatePodoficirRequiredMessage_idpodoficir}"/>
+                        <p:outputLabel value="IME" for="imeclana" />
+                        <p:inputText  id="imeclana" value="#{podoficirController.selected.imeclana}" title="#{bundle.CreatePodoficirTitle_imeclana}" />
+                        <p:outputLabel value="PREZIME" for="prezimeclana" />
+                        <p:inputText id="prezimeclana" value="#{podoficirController.selected.prezimeclana}" title="#{bundle.CreatePodoficirTitle_prezimeclana}" />
+                        <p:outputLabel value="JMBG" for="jmbgclana" />
+                        <p:inputText id="jmbgclana" value="#{podoficirController.selected.jmbgclana}" title="#{bundle.CreatePodoficirTitle_jmbgclana}" />
+                        <p:outputLabel value="GODINA RODJENJA" for="godinarodjenjaclana" />
+                        <p:calendar id="godinarodjenjaclana" pattern="MM/dd/yyyy" value="#{podoficirController.selected.godinarodjenjaclana}" title="#{bundle.EditPodoficirTitle_godinarodjenjaclana}"  showOn="button"/>
+                        <p:outputLabel value="MESTO RODJENJA" for="mestorodjenjaclana" />
+                        <p:inputText id="mestorodjenjaclana" value="#{podoficirController.selected.mestorodjenjaclana}" title="#{bundle.CreatePodoficirTitle_mestorodjenjaclana}" />
+                        <p:outputLabel value="KONTAKT" for="kontaktclana" />
+                        <p:inputText id="kontaktclana" value="#{podoficirController.selected.kontaktclana}" title="#{bundle.CreatePodoficirTitle_kontaktclana}" />
+                        <p:outputLabel value="VISINA(CM)" for="visinaclana" />
+                        <p:inputText id="visinaclana" value="#{podoficirController.selected.visinaclana}" title="#{bundle.CreatePodoficirTitle_visinaclana}" />
+                        <p:outputLabel value="KILAZA(KG)" for="kilazaclana" />
+                        <p:inputText id="kilazaclana" value="#{podoficirController.selected.kilazaclana}" title="#{bundle.CreatePodoficirTitle_kilazaclana}" />
+                        <p:outputLabel value="BOJA OCIU" for="bojaociuclana" />
+                        <p:inputText id="bojaociuclana" value="#{podoficirController.selected.bojaociuclana}" title="#{bundle.CreatePodoficirTitle_bojaociuclana}" />
+                        <p:outputLabel value="FOTO" for="fotoclana" />
+                        <p:inputText id="fotoclana" value="#{podoficirController.selected.fotoclana}" title="#{bundle.CreatePodoficirTitle_fotoclana}" />
+                        <p:outputLabel value="OTISAK" for="otisakprstaclana" />
+                        <p:inputText id="otisakprstaclana" value="#{podoficirController.selected.otisakprstaclana}" title="#{bundle.CreatePodoficirTitle_otisakprstaclana}" />
+                        <p:outputLabel value="STATUS" for="statusclana" />
+                        <p:inputText id="statusclana" value="#{podoficirController.selected.statusclana}" title="#{bundle.CreatePodoficirTitle_statusclana}" />
+                        <p:outputLabel value="PLATA" for="plataclana" />
+                        <p:inputText id="plataclana" value="#{podoficirController.selected.plataclana}" title="#{bundle.CreatePodoficirTitle_plataclana}" />
+                        <p:outputLabel value="POCETAK SLUZBE" for="pocetaksluzbepodoficira" />
+                        <p:calendar id="pocetaksluzbepodoficira" pattern="MM/dd/yyyy HH:mm:ss" value="#{podoficirController.selected.pocetaksluzbepodoficira}" title="#{bundle.EditPodoficirTitle_pocetaksluzbepodoficira}" required="true" requiredMessage="#{bundle.EditPodoficirRequiredMessage_pocetaksluzbepodoficira}" showOn="button"/>
+                        <p:outputLabel value="KRAJ SLUZBE" for="krajsluzbepodoficira" />
+                        <p:calendar id="krajsluzbepodoficira" pattern="MM/dd/yyyy" value="#{podoficirController.selected.krajsluzbepodoficira}" title="#{bundle.EditPodoficirTitle_krajsluzbepodoficira}"  showOn="button"/>
+                        <p:outputLabel value="KASARNA" for="idkasarna" />
+                        <p:selectOneMenu id="idkasarna" value="#{podoficirController.selected.idkasarna}" >
+                            <f:selectItems value="#{kasarnaController.itemsAvailableSelectOne}"
+                                           var="idkasarnaItem"
+                                           itemValue="#{idkasarnaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="CIN" for="idcina" />
+                        <p:selectOneMenu id="idcina" value="#{podoficirController.selected.idcina}" >
+                            <f:selectItems value="#{cinoviController.itemsAvailableSelectOne}"
+                                           var="idcinaItem"
+                                           itemValue="#{idcinaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="JEDINICA" for="idjedinice" />
+                        <p:selectOneMenu id="idjedinice" value="#{podoficirController.selected.idjedinice}" required="true" requiredMessage="#{bundle.EditPodoficirRequiredMessage_idjedinice}">
+                            <f:selectItems value="#{jedinicaController.itemsAvailableSelectOne}"
+                                           var="idjediniceItem"
+                                           itemValue="#{idjediniceItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{podoficirController.create}" value="#{bundle.Save}" update="display,:PodoficirListForm:datalist,:growl" oncomplete="handleSubmit(args,'PodoficirCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PodoficirCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+             <hr/>
+            <h:form enctype="multipart/form-data"  prependId="false">
+                <h:outputText value="Unesi ID podoficira "></h:outputText>
+                <h:inputText value="#{podoficirController.idString}" required="true"/>
+                <br/>
+                <h:outputText value="Unesi sliku "></h:outputText>
+                <h:inputFile value="#{podoficirController.upFile1}"/>
+                <br/>
+                <h:outputText value="Unesi otisak prsta "></h:outputText>
+                <h:inputFile value="#{podoficirController.upFile2}"/>
+                <br/>
+                <h:commandButton value="Sacuvaj" type="submit" action="#{podoficirController.uploadSlika()}"/>
+             </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

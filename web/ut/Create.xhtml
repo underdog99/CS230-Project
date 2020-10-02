@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UnutranCreateDlg" widgetVar="UnutranCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUnutranTitle}">
+            <h:form id="UnutranCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{unutranController.selected != null}">
+                        <p:outputLabel value="ID" for="idunutran" />
+                        <p:inputText id="idunutran" value="#{unutranController.selected.idunutran}" title="#{bundle.CreateUnutranTitle_idunutran}" required="true" requiredMessage="#{bundle.CreateUnutranRequiredMessage_idunutran}"/>
+                        <p:outputLabel value="NAZIV" for="nazivunutran" />
+                        <p:inputText id="nazivunutran" value="#{unutranController.selected.nazivunutran}" title="#{bundle.CreateUnutranTitle_nazivunutran}" />
+                        <p:outputLabel value="OD" for="odunutra" />
+                        <p:inputText id="odunutra" value="#{unutranController.selected.odunutra}" title="#{bundle.CreateUnutranTitle_odunutra}" />
+                        <p:outputLabel value="DO" for="dounutra" />
+                        <p:inputText id="dounutra" value="#{unutranController.selected.dounutra}" title="#{bundle.CreateUnutranTitle_dounutra}" />
+                        <p:outputLabel value="SADRZAJ" for="staunutran" />
+                        <p:inputTextarea rows="4" cols="30" id="staunutran" value="#{unutranController.selected.staunutran}" title="#{bundle.CreateUnutranTitle_staunutran}" />
+                        <p:outputLabel value="KOLICINA" for="kolicinaunutran" />
+                        <p:inputText id="kolicinaunutran" value="#{unutranController.selected.kolicinaunutran}" title="#{bundle.CreateUnutranTitle_kolicinaunutran}" />
+                        <p:outputLabel value="TROSAK" for="trosakunutran" />
+                        <p:inputText id="trosakunutran" value="#{unutranController.selected.trosakunutran}" title="#{bundle.CreateUnutranTitle_trosakunutran}" />
+                        <p:outputLabel value="PRIORITET" for="prioritetunutran" />
+                        <p:inputText id="prioritetunutran" value="#{unutranController.selected.prioritetunutran}" title="#{bundle.CreateUnutranTitle_prioritetunutran}" />
+                        <p:outputLabel value="ISPLATLJIVOST" for="isplatljivostunutran" />
+                        <p:inputText id="isplatljivostunutran" value="#{unutranController.selected.isplatljivostunutran}" title="#{bundle.CreateUnutranTitle_isplatljivostunutran}" />
+                        <p:outputLabel value="KREIRANJE TRANSF." for="kreiranjeunutran" />
+                        <p:calendar id="kreiranjeunutran" pattern="MM/dd/yyyy HH:mm:ss" value="#{unutranController.selected.kreiranjeunutran}" title="#{bundle.EditUnutranTitle_kreiranjeunutran}" required="true" requiredMessage="#{bundle.EditUnutranRequiredMessage_kreiranjeunutran}" showOn="button"/>
+                        <p:outputLabel value="DATUM ISPORUKE" for="datumisporucivanjaunutran" />
+                        <p:calendar id="datumisporucivanjaunutran" pattern="MM/dd/yyyy" value="#{unutranController.selected.datumisporucivanjaunutran}" title="#{bundle.EditUnutranTitle_datumisporucivanjaunutran}"  showOn="button"/>
+                        <p:outputLabel value="STATUS" for="statusunutran" />
+                        <p:inputText id="statusunutran" value="#{unutranController.selected.statusunutran}" title="#{bundle.CreateUnutranTitle_statusunutran}" />
+                        <p:outputLabel value="KASARNA" for="idkasarna" />
+                        <p:selectOneMenu id="idkasarna" value="#{unutranController.selected.idkasarna}" >
+                            <f:selectItems value="#{kasarnaController.itemsAvailableSelectOne}"
+                                           var="idkasarnaItem"
+                                           itemValue="#{idkasarnaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{unutranController.create}" value="#{bundle.Save}" update="display,:UnutranListForm:datalist,:growl" oncomplete="handleSubmit(args,'UnutranCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UnutranCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PodoficirViewDlg" widgetVar="PodoficirViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPodoficirTitle}">
+            <h:form id="PodoficirViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{podoficirController.selected != null}">
+                        <h:outputText value="Slika"/>
+                        <h:graphicImage url="#{podoficirController.slika()}" width="150" height="150"/>
+                        <h:outputText value="Otisak"/>
+                        <h:graphicImage url="#{podoficirController.prst()}" width="100" height="150"/>
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{podoficirController.selected.idpodoficir}" title="#{bundle.ViewPodoficirTitle_idpodoficir}"/>
+                        <h:outputText value="IME"/>
+                        <h:outputText value="#{podoficirController.selected.imeclana}" title="#{bundle.ViewPodoficirTitle_imeclana}"/>
+                        <h:outputText value="PREZIME"/>
+                        <h:outputText value="#{podoficirController.selected.prezimeclana}" title="#{bundle.ViewPodoficirTitle_prezimeclana}"/>
+                        <h:outputText value="JMBG"/>
+                        <h:outputText value="#{podoficirController.selected.jmbgclana}" title="#{bundle.ViewPodoficirTitle_jmbgclana}"/>
+                        <h:outputText value="GODINA RODJENJA"/>
+                        <h:outputText value="#{podoficirController.selected.godinarodjenjaclana}" title="#{bundle.ViewPodoficirTitle_godinarodjenjaclana}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="MESTO RODJENJA"/>
+                        <h:outputText value="#{podoficirController.selected.mestorodjenjaclana}" title="#{bundle.ViewPodoficirTitle_mestorodjenjaclana}"/>
+                        <h:outputText value="KONTAKT"/>
+                        <h:outputText value="#{podoficirController.selected.kontaktclana}" title="#{bundle.ViewPodoficirTitle_kontaktclana}"/>
+                        <h:outputText value="VISINA(CM)"/>
+                        <h:outputText value="#{podoficirController.selected.visinaclana}" title="#{bundle.ViewPodoficirTitle_visinaclana}"/>
+                        <h:outputText value="KILAZA(KG)"/>
+                        <h:outputText value="#{podoficirController.selected.kilazaclana}" title="#{bundle.ViewPodoficirTitle_kilazaclana}"/>
+                        <h:outputText value="BOJA OCIU"/>
+                        <h:outputText value="#{podoficirController.selected.bojaociuclana}" title="#{bundle.ViewPodoficirTitle_bojaociuclana}"/>
+                        <h:outputText value="STATUS"/>
+                        <h:outputText value="#{podoficirController.selected.statusclana}" title="#{bundle.ViewPodoficirTitle_statusclana}"/>
+                        <h:outputText value="PLATA"/>
+                        <h:outputText value="#{podoficirController.selected.plataclana}" title="#{bundle.ViewPodoficirTitle_plataclana}"/>
+                        <h:outputText value="POCETAK SLUZBE"/>
+                        <h:outputText value="#{podoficirController.selected.pocetaksluzbepodoficira}" title="#{bundle.ViewPodoficirTitle_pocetaksluzbepodoficira}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="KRAJ SLUZBE"/>
+                        <h:outputText value="#{podoficirController.selected.krajsluzbepodoficira}" title="#{bundle.ViewPodoficirTitle_krajsluzbepodoficira}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="KASARNA"/>
+                        <h:outputText value="#{podoficirController.selected.idkasarna}" title="#{bundle.ViewPodoficirTitle_idkasarna}"/>
+                        <h:outputText value="CIN"/>
+                        <h:outputText value="#{podoficirController.selected.idcina}" title="#{bundle.ViewPodoficirTitle_idcina}"/>
+                        <h:outputText value="JEDINICA"/>
+                        <h:outputText value="#{podoficirController.selected.idjedinice}" title="#{bundle.ViewPodoficirTitle_idjedinice}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PodoficirViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

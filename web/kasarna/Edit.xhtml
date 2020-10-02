@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="KasarnaEditDlg" widgetVar="KasarnaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditKasarnaTitle}">
+            <h:form id="KasarnaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{kasarnaController.selected != null}">
+                        <p:outputLabel value="ID" for="idkasarna" />
+                        <p:inputText id="idkasarna" value="#{kasarnaController.selected.idkasarna}" title="#{bundle.EditKasarnaTitle_idkasarna}" required="true" requiredMessage="#{bundle.EditKasarnaRequiredMessage_idkasarna}"/>
+                        <p:outputLabel value="NAZIV" for="nazivkasarna" />
+                        <p:inputText id="nazivkasarna" value="#{kasarnaController.selected.nazivkasarna}" title="#{bundle.EditKasarnaTitle_nazivkasarna}" />
+                        <p:outputLabel value="ULICA" for="ulicakasarna" />
+                        <p:inputText id="ulicakasarna" value="#{kasarnaController.selected.ulicakasarna}" title="#{bundle.EditKasarnaTitle_ulicakasarna}" />
+                        <p:outputLabel value="KONTAKT" for="kontaktkasarna" />
+                        <p:inputText id="kontaktkasarna" value="#{kasarnaController.selected.kontaktkasarna}" title="#{bundle.EditKasarnaTitle_kontaktkasarna}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{kasarnaController.update}" value="#{bundle.Save}" update="display,:KasarnaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'KasarnaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="KasarnaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

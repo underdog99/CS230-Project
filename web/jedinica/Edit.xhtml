@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="JedinicaEditDlg" widgetVar="JedinicaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditJedinicaTitle}">
+            <h:form id="JedinicaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{jedinicaController.selected != null}">
+                        <p:outputLabel value="ID" for="idjedinice" />
+                        <p:inputText id="idjedinice" value="#{jedinicaController.selected.idjedinice}" title="#{bundle.EditJedinicaTitle_idjedinice}" required="true" requiredMessage="#{bundle.EditJedinicaRequiredMessage_idjedinice}"/>
+                        <p:outputLabel value="GRB" for="grbjedinice" />
+                        <p:inputText id="grbjedinice" value="#{jedinicaController.selected.grbjedinice}" title="#{bundle.EditJedinicaTitle_grbjedinice}" />
+                        <p:outputLabel value="NAZIV" for="nazivjedinice" />
+                        <p:inputText id="nazivjedinice" value="#{jedinicaController.selected.nazivjedinice}" title="#{bundle.EditJedinicaTitle_nazivjedinice}" />
+                        <p:outputLabel value="OPIS" for="opisjedinice" />
+                        <p:inputTextarea rows="4" cols="30" id="opisjedinice" value="#{jedinicaController.selected.opisjedinice}" title="#{bundle.EditJedinicaTitle_opisjedinice}" />
+                        <p:outputLabel value="TROSKOVI" for="trosakjedinice" />
+                        <p:inputText id="trosakjedinice" value="#{jedinicaController.selected.trosakjedinice}" title="#{bundle.EditJedinicaTitle_trosakjedinice}" />
+                        <p:outputLabel value="PRIORITET" for="prioritetjedinice" />
+                        <p:inputText id="prioritetjedinice" value="#{jedinicaController.selected.prioritetjedinice}" title="#{bundle.EditJedinicaTitle_prioritetjedinice}" />
+                        <p:outputLabel value="ISPLATLJIVOST" for="isplatljivostjedinice" />
+                        <p:inputText id="isplatljivostjedinice" value="#{jedinicaController.selected.isplatljivostjedinice}" title="#{bundle.EditJedinicaTitle_isplatljivostjedinice}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{jedinicaController.update}" value="#{bundle.Save}" update="display,:JedinicaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'JedinicaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="JedinicaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

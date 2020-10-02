@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NaoruzanjeViewDlg" widgetVar="NaoruzanjeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewNaoruzanjeTitle}">
+            <h:form id="NaoruzanjeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{naoruzanjeController.selected != null}">
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{naoruzanjeController.selected.idnaoruzanja}" title="#{bundle.ViewNaoruzanjeTitle_idnaoruzanja}"/>
+                        <h:outputText value="MODEL"/>
+                        <h:outputText value="#{naoruzanjeController.selected.modelnaoruzanja}" title="#{bundle.ViewNaoruzanjeTitle_modelnaoruzanja}"/>
+                        <h:outputText value="MARKA"/>
+                        <h:outputText value="#{naoruzanjeController.selected.markanaoruzanja}" title="#{bundle.ViewNaoruzanjeTitle_markanaoruzanja}"/>
+                        <h:outputText value="KALIBAR"/>
+                        <h:outputText value="#{naoruzanjeController.selected.kalibarnaoruzanja}" title="#{bundle.ViewNaoruzanjeTitle_kalibarnaoruzanja}"/>
+                        <h:outputText value="TIP"/>
+                        <h:outputText value="#{naoruzanjeController.selected.tipnaoruzanja}" title="#{bundle.ViewNaoruzanjeTitle_tipnaoruzanja}"/>
+                        <h:outputText value="OPIS"/>
+                        <h:outputText value="#{naoruzanjeController.selected.opisnaoruzanja}" title="#{bundle.ViewNaoruzanjeTitle_opisnaoruzanja}"/>
+                        <h:outputText value="PRIORITET"/>
+                        <h:outputText value="#{naoruzanjeController.selected.prioritetnaoruzanja}" title="#{bundle.ViewNaoruzanjeTitle_prioritetnaoruzanja}"/>
+                        <h:outputText value="TROSAK"/>
+                        <h:outputText value="#{naoruzanjeController.selected.trosaknaoruzanja}" title="#{bundle.ViewNaoruzanjeTitle_trosaknaoruzanja}"/>
+                        <h:outputText value="ISPLATLJIVOST"/>
+                        <h:outputText value="#{naoruzanjeController.selected.isplatljivostnaoruzanja}" title="#{bundle.ViewNaoruzanjeTitle_isplatljivostnaoruzanja}"/>
+                        <h:outputText value="SLIKA"/>
+                        <h:outputText value="#{naoruzanjeController.selected.slikanaoruzanja}" title="#{bundle.ViewNaoruzanjeTitle_slikanaoruzanja}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="NaoruzanjeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
+
+

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Jedinice</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <h2 align="center">Jedinice</h2>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    <h5 align="center">CS230-PZ-2020 Mladen Simeonovic 3668</h5>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <div align="center">
+                        
+                    </div>    
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="west" size="250" resizable="true">
+                    <p:graphicImage url="res/logo.png" width="200" height="200"/>
+                    <p:menu>
+                        <p:submenu label="Meni">
+                            <p:menuitem value="Članovi" url="clanovi.xhtml"/>
+                            <p:menuitem style="color: white" value="Jedinice" url="jedinice.xhtml"/>
+                            <p:menuitem value="Kasarne" url="kasarne.xhtml"/>
+                            <p:menuitem value="Vozila" url="vozila.xhtml"/>
+                            <p:menuitem value="Medicinski res." url="medres.xhtml"/>
+                            <p:menuitem value="MRE paketi" url="mre.xhtml"/>
+                            <p:menuitem value="Naoružanje" url="naoruzanje.xhtml"/>
+                            <p:menuitem value="Unutrašnji transferi" url="unu.xhtml"/>
+                            <p:menuitem value="Spoljašni transferi" url="spo.xhtml"/>
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="center">
+                    <div align="center">
+                        <br/>
+                        <br/>
+                        <a href="http://localhost:29883/CS230-PZ-Mladen-Simeonovic-3668/faces/pocetna.xhtml">Vrati se na početak</a>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p:graphicImage url="res/jedinica.png"/>
+                    </div>    
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="east" size="250" resizable="true">
+                    <p:graphicImage url="res/zastava.png" width="200" height="200"/>
+                    <p:menu>
+                        <p:submenu label="Upravljanje">
+                            <p:menuitem value="Postojeće jedinice i upravljanje" url="jedinica/List.xhtml"/>
+                             <p:menuitem value="Statistika" url="jedinica/statistika.xhtml"/>
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+                
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

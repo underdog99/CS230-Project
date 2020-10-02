@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="JedinicaViewDlg" widgetVar="JedinicaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewJedinicaTitle}">
+            <h:form id="JedinicaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{jedinicaController.selected != null}">
+                        <h:outputText value="Slika"/>
+                        <h:graphicImage url="#{jedinicaController.slika()}" width="150" height="150"/>
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{jedinicaController.selected.idjedinice}" title="#{bundle.ViewJedinicaTitle_idjedinice}"/>
+                        <h:outputText value="NAZIV"/>
+                        <h:outputText value="#{jedinicaController.selected.nazivjedinice}" title="#{bundle.ViewJedinicaTitle_nazivjedinice}"/>
+                        <h:outputText value="OPIS"/>
+                        <h:outputText value="#{jedinicaController.selected.opisjedinice}" title="#{bundle.ViewJedinicaTitle_opisjedinice}"/>
+                        <h:outputText value="TROSAK"/>
+                        <h:outputText value="#{jedinicaController.selected.trosakjedinice}" title="#{bundle.ViewJedinicaTitle_trosakjedinice}"/>
+                        <h:outputText value="PRIORITET"/>
+                        <h:outputText value="#{jedinicaController.selected.prioritetjedinice}" title="#{bundle.ViewJedinicaTitle_prioritetjedinice}"/>
+                        <h:outputText value="ISPLATLJIVOST"/>
+                        <h:outputText value="#{jedinicaController.selected.isplatljivostjedinice}" title="#{bundle.ViewJedinicaTitle_isplatljivostjedinice}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="JedinicaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VodenovoziloViewDlg" widgetVar="VodenovoziloViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewVodenovoziloTitle}">
+            <h:form id="VodenovoziloViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vodenovoziloController.selected != null}">
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{vodenovoziloController.selected.idvodenogvozila}" title="#{bundle.ViewVodenovoziloTitle_idvodenogvozila}"/>
+                        <h:outputText value="MARKA"/>
+                        <h:outputText value="#{vodenovoziloController.selected.markavozila}" title="#{bundle.ViewVodenovoziloTitle_markavozila}"/>
+                        <h:outputText value="MODEL"/>
+                        <h:outputText value="#{vodenovoziloController.selected.modelvozilo}" title="#{bundle.ViewVodenovoziloTitle_modelvozilo}"/>
+                        <h:outputText value="SLIKA"/>
+                        <h:outputText value="#{vodenovoziloController.selected.slikavozilo}" title="#{bundle.ViewVodenovoziloTitle_slikavozilo}"/>
+                        <h:outputText value="TROSAK SERVISA"/>
+                        <h:outputText value="#{vodenovoziloController.selected.trosakservisa}" title="#{bundle.ViewVodenovoziloTitle_trosakservisa}"/>
+                        <h:outputText value="PRIORITET"/>
+                        <h:outputText value="#{vodenovoziloController.selected.prioritetvozila}" title="#{bundle.ViewVodenovoziloTitle_prioritetvozila}"/>
+                        <h:outputText value="OPIS"/>
+                        <h:outputText value="#{vodenovoziloController.selected.opisvozila}" title="#{bundle.ViewVodenovoziloTitle_opisvozila}"/>
+                        <h:outputText value="TROSAK GORIVA"/>
+                        <h:outputText value="#{vodenovoziloController.selected.trosakgoriva}" title="#{bundle.ViewVodenovoziloTitle_trosakgoriva}"/>
+                        <h:outputText value="ISPLATLJIVOST}"/>
+                        <h:outputText value="#{vodenovoziloController.selected.isplatljivostvozila}" title="#{bundle.ViewVodenovoziloTitle_isplatljivostvozila}"/>
+                        <h:outputText value="BR. MOTORA"/>
+                        <h:outputText value="#{vodenovoziloController.selected.brmotoravodvozila}" title="#{bundle.ViewVodenovoziloTitle_brmotoravodvozila}"/>
+                        <h:outputText value="TIP MOTORA"/>
+                        <h:outputText value="#{vodenovoziloController.selected.tipmotoravodvozila}" title="#{bundle.ViewVodenovoziloTitle_tipmotoravodvozila}"/>
+                        <h:outputText value="SNAGA MOTORA"/>
+                        <h:outputText value="#{vodenovoziloController.selected.snagamotoravodvozila}" title="#{bundle.ViewVodenovoziloTitle_snagamotoravodvozila}"/>
+                        <h:outputText value="KAPACITET"/>
+                        <h:outputText value="#{vodenovoziloController.selected.kapacitetvodvozila}" title="#{bundle.ViewVodenovoziloTitle_kapacitetvodvozila}"/>
+                        <h:outputText value="TIP VOZILA"/>
+                        <h:outputText value="#{vodenovoziloController.selected.tipvodvozila}" title="#{bundle.ViewVodenovoziloTitle_tipvodvozila}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="VodenovoziloViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

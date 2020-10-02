@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Relationship3EditDlg" widgetVar="Relationship3EditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditRelationship3Title}">
+            <h:form id="Relationship3EditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{relationship3Controller.selected != null}">
+                        <p:outputLabel value="ID" for="idR3" />
+                        <p:inputText id="idR3" value="#{relationship3Controller.selected.idR3}" title="#{bundle.EditRelationship3Title_idR3}" required="true" requiredMessage="#{bundle.EditRelationship3RequiredMessage_idR3}"/>
+                        <p:outputLabel value="ID JEDINICE" for="idjedinice" />
+                        <p:selectOneMenu id="idjedinice" value="#{relationship3Controller.selected.idjedinice}" required="true" requiredMessage="#{bundle.EditRelationship3RequiredMessage_idjedinice}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{jedinicaController.itemsAvailableSelectOne}"
+                                           var="idjediniceItem"
+                                           itemValue="#{idjediniceItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="ID KASARNE" for="idkasarna" />
+                        <p:selectOneMenu id="idkasarna" value="#{relationship3Controller.selected.idkasarna}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{kasarnaController.itemsAvailableSelectOne}"
+                                           var="idkasarnaItem"
+                                           itemValue="#{idkasarnaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{relationship3Controller.update}" value="#{bundle.Save}" update="display,:Relationship3ListForm:datalist,:growl" oncomplete="handleSubmit(args, 'Relationship3EditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Relationship3EditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

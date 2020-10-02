@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OficirEditDlg" widgetVar="OficirEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOficirTitle}">
+            <h:form id="OficirEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{oficirController.selected != null}">
+                        <p:outputLabel value="ID" for="idoficira" />
+                        <p:inputText id="idoficira" value="#{oficirController.selected.idoficira}" title="#{bundle.EditOficirTitle_idoficira}" required="true" requiredMessage="#{bundle.EditOficirRequiredMessage_idoficira}"/>
+                        <p:outputLabel value="IME" for="imeclana" />
+                        <p:inputText id="imeclana" value="#{oficirController.selected.imeclana}" title="#{bundle.EditOficirTitle_imeclana}" />
+                        <p:outputLabel value="PREZIME" for="prezimeclana" />
+                        <p:inputText id="prezimeclana" value="#{oficirController.selected.prezimeclana}" title="#{bundle.EditOficirTitle_prezimeclana}" />
+                        <p:outputLabel value="JMBG" for="jmbgclana" />
+                        <p:inputText id="jmbgclana" value="#{oficirController.selected.jmbgclana}" title="#{bundle.EditOficirTitle_jmbgclana}" />
+                        <p:outputLabel value="GODINA RODJENJA" for="godinarodjenjaclana" />
+                        <p:calendar id="godinarodjenjaclana" pattern="MM/dd/yyyy" value="#{oficirController.selected.godinarodjenjaclana}" title="#{bundle.EditOficirTitle_godinarodjenjaclana}"  showOn="button"/>
+                        <p:outputLabel value="MESTO RODJENJA" for="mestorodjenjaclana" />
+                        <p:inputText id="mestorodjenjaclana" value="#{oficirController.selected.mestorodjenjaclana}" title="#{bundle.EditOficirTitle_mestorodjenjaclana}" />
+                        <p:outputLabel value="KONTAKT" for="kontaktclana" />
+                        <p:inputText id="kontaktclana" value="#{oficirController.selected.kontaktclana}" title="#{bundle.EditOficirTitle_kontaktclana}" />
+                        <p:outputLabel value="VISINA(CM)" for="visinaclana" />
+                        <p:inputText id="visinaclana" value="#{oficirController.selected.visinaclana}" title="#{bundle.EditOficirTitle_visinaclana}" />
+                        <p:outputLabel value="KILZA(KG)" for="kilazaclana" />
+                        <p:inputText id="kilazaclana" value="#{oficirController.selected.kilazaclana}" title="#{bundle.EditOficirTitle_kilazaclana}" />
+                        <p:outputLabel value="BOJA OCIU" for="bojaociuclana" />
+                        <p:inputText id="bojaociuclana" value="#{oficirController.selected.bojaociuclana}" title="#{bundle.EditOficirTitle_bojaociuclana}" />
+                        <p:outputLabel value="FOTO" for="fotoclana" />
+                        <p:inputText id="fotoclana" value="#{oficirController.selected.fotoclana}" title="#{bundle.EditOficirTitle_fotoclana}" />
+                        <p:outputLabel value="OTISAK" for="otisakprstaclana" />
+                        <p:inputText id="otisakprstaclana" value="#{oficirController.selected.otisakprstaclana}" title="#{bundle.EditOficirTitle_otisakprstaclana}" />
+                        <p:outputLabel value="STATUS" for="statusclana" />
+                        <p:inputText id="statusclana" value="#{oficirController.selected.statusclana}" title="#{bundle.EditOficirTitle_statusclana}" />
+                        <p:outputLabel value="PLATA" for="plataclana" />
+                        <p:inputText id="plataclana" value="#{oficirController.selected.plataclana}" title="#{bundle.EditOficirTitle_plataclana}" />
+                        <p:outputLabel value="POCETAK SLUZBE" for="pocetaksluzbeoficira" />
+                        <p:inputText id="pocetaksluzbeoficira" value="#{oficirController.selected.pocetaksluzbeoficira}" title="#{bundle.EditOficirTitle_pocetaksluzbeoficira}" />
+                        <p:outputLabel value="KRAJ SLUZBE" for="krajsluzbeoficira" />
+                        <p:inputText id="krajsluzbeoficira" value="#{oficirController.selected.krajsluzbeoficira}" title="#{bundle.EditOficirTitle_krajsluzbeoficira}" />
+                        <p:outputLabel value="KASARNA" for="idkasarna" />
+                        <p:selectOneMenu id="idkasarna" value="#{oficirController.selected.idkasarna}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{kasarnaController.itemsAvailableSelectOne}"
+                                           var="idkasarnaItem"
+                                           itemValue="#{idkasarnaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="CIN" for="idcina" />
+                        <p:selectOneMenu id="idcina" value="#{oficirController.selected.idcina}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{cinoviController.itemsAvailableSelectOne}"
+                                           var="idcinaItem"
+                                           itemValue="#{idcinaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="JEINICA" for="idjedinice" />
+                        <p:selectOneMenu id="idjedinice" value="#{oficirController.selected.idjedinice}" required="true" requiredMessage="#{bundle.EditOficirRequiredMessage_idjedinice}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{jedinicaController.itemsAvailableSelectOne}"
+                                           var="idjediniceItem"
+                                           itemValue="#{idjediniceItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{oficirController.update}" value="#{bundle.Save}" update="display,:OficirListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OficirEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OficirEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

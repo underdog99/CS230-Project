@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="KopnenovoziloViewDlg" widgetVar="KopnenovoziloViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewKopnenovoziloTitle}">
+            <h:form id="KopnenovoziloViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{kopnenovoziloController.selected != null}">
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.idkopnenovozilo}" title="#{bundle.ViewKopnenovoziloTitle_idkopnenovozilo}"/>
+                        <h:outputText value="MARKA"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.markavozila}" title="#{bundle.ViewKopnenovoziloTitle_markavozila}"/>
+                        <h:outputText value="MODLE"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.modelvozilo}" title="#{bundle.ViewKopnenovoziloTitle_modelvozilo}"/>
+                        <h:outputText value="SLIKA"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.slikavozilo}" title="#{bundle.ViewKopnenovoziloTitle_slikavozilo}"/>
+                        <h:outputText value="TROSKOVI SERVISA"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.trosakservisa}" title="#{bundle.ViewKopnenovoziloTitle_trosakservisa}"/>
+                        <h:outputText value="PRIORITET"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.prioritetvozila}" title="#{bundle.ViewKopnenovoziloTitle_prioritetvozila}"/>
+                        <h:outputText value="OPIS"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.opisvozila}" title="#{bundle.ViewKopnenovoziloTitle_opisvozila}"/>
+                        <h:outputText value="TROSKOVI GORIVA"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.trosakgoriva}" title="#{bundle.ViewKopnenovoziloTitle_trosakgoriva}"/>
+                        <h:outputText value="ISPLATLJIVOST"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.isplatljivostvozila}" title="#{bundle.ViewKopnenovoziloTitle_isplatljivostvozila}"/>
+                        <h:outputText value="TIP VOZILA"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.tipvozila}" title="#{bundle.ViewKopnenovoziloTitle_tipvozila}"/>
+                        <h:outputText value="TIP MOTORA"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.tipmotora}" title="#{bundle.ViewKopnenovoziloTitle_tipmotora}"/>
+                        <h:outputText value="KS"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.kskopnenogvozila}" title="#{bundle.ViewKopnenovoziloTitle_kskopnenogvozila}"/>
+                        <h:outputText value="CC"/>
+                        <h:outputText value="#{kopnenovoziloController.selected.cckopnenogvozila}" title="#{bundle.ViewKopnenovoziloTitle_cckopnenogvozila}"/>
+                        <h:outputText value="REG. BR."/>
+                        <h:outputText value="#{kopnenovoziloController.selected.regbrvozila}" title="#{bundle.ViewKopnenovoziloTitle_regbrvozila}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="KopnenovoziloViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

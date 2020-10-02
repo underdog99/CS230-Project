@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUnutran2Title}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="Unutran2ListForm">
+                <p:panel header="#{bundle.ListUnutran2Title}">
+                    <p:dataTable id="datalist" value="#{unutran2Controller.items}" var="item"
+                                 selectionMode="single" selection="#{unutran2Controller.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idunutran}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idunutran}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="NAZIV"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazivunutran}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="OD"/>
+                            </f:facet>
+                            <h:outputText value="#{item.odunutra}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="DO"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dounutra}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="SADRZAJ"/>
+                            </f:facet>
+                            <h:outputText value="#{item.staunutran}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="KOLICINA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kolicinaunutran}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="TROSAK"/>
+                            </f:facet>
+                            <h:outputText value="#{item.trosakunutran}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="PRIORITET"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prioritetunutran}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ISPLATLJIVOST"/>
+                            </f:facet>
+                            <h:outputText value="#{item.isplatljivostunutran}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="KREIRAN TRANS."/>
+                            </f:facet>
+                            <h:outputText value="#{item.kreiranjeunutran}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="DATUM ISPORUKE"/>
+                            </f:facet>
+                            <h:outputText value="#{item.datumisporucivanjaunutran}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="STATUS"/>
+                            </f:facet>
+                            <h:outputText value="#{item.statusunutran}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="KASARNA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idkasarna}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{unutran2Controller.prepareCreate}" update=":Unutran2CreateForm" oncomplete="PF('Unutran2CreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":Unutran2ViewForm" oncomplete="PF('Unutran2ViewDialog').show()" disabled="#{empty unutran2Controller.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":Unutran2EditForm" oncomplete="PF('Unutran2EditDialog').show()" disabled="#{empty unutran2Controller.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{unutran2Controller.destroy}" update=":growl,datalist" disabled="#{empty unutran2Controller.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

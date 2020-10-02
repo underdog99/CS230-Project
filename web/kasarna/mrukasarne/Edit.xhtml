@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Relationship4EditDlg" widgetVar="Relationship4EditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditRelationship4Title}">
+            <h:form id="Relationship4EditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{relationship4Controller.selected != null}">
+                        <p:outputLabel value="ID" for="idR4" />
+                        <p:inputText id="idR4" value="#{relationship4Controller.selected.idR4}" title="#{bundle.EditRelationship4Title_idR4}" required="true" requiredMessage="#{bundle.EditRelationship4RequiredMessage_idR4}"/>
+                        <p:outputLabel value="ID KASARNA" for="idkasarna" />
+                        <p:selectOneMenu id="idkasarna" value="#{relationship4Controller.selected.idkasarna}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{kasarnaController.itemsAvailableSelectOne}"
+                                           var="idkasarnaItem"
+                                           itemValue="#{idkasarnaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="ID MED. RES." for="idmedres" />
+                        <p:selectOneMenu id="idmedres" value="#{relationship4Controller.selected.idmedres}" required="true" requiredMessage="#{bundle.EditRelationship4RequiredMessage_idmedres}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{medresursController.itemsAvailableSelectOne}"
+                                           var="idmedresItem"
+                                           itemValue="#{idmedresItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{relationship4Controller.update}" value="#{bundle.Save}" update="display,:Relationship4ListForm:datalist,:growl" oncomplete="handleSubmit(args, 'Relationship4EditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Relationship4EditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

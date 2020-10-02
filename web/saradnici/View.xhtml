@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SaradniciViewDlg" widgetVar="SaradniciViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSaradniciTitle}">
+            <h:form id="SaradniciViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{saradniciController.selected != null}">
+                        <h:outputText value="Slika"/>
+                        <h:graphicImage url="#{saradniciController.slika()}" width="150" height="150"/>
+                        <h:outputText value="Otisak"/>
+                        <h:graphicImage url="#{saradniciController.prst()}" width="100" height="150"/>
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{saradniciController.selected.idclana}" title="#{bundle.ViewSaradniciTitle_idclana}"/>
+                        <h:outputText value="IME"/>
+                        <h:outputText value="#{saradniciController.selected.imeclana}" title="#{bundle.ViewSaradniciTitle_imeclana}"/>
+                        <h:outputText value="PREZIME"/>
+                        <h:outputText value="#{saradniciController.selected.prezimeclana}" title="#{bundle.ViewSaradniciTitle_prezimeclana}"/>
+                        <h:outputText value="JMBG"/>
+                        <h:outputText value="#{saradniciController.selected.jmbgclana}" title="#{bundle.ViewSaradniciTitle_jmbgclana}"/>
+                        <h:outputText value="GODINA RODJENJA"/>
+                        <h:outputText value="#{saradniciController.selected.godinarodjenjaclana}" title="#{bundle.ViewSaradniciTitle_godinarodjenjaclana}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="MESTO RODJENJA"/>
+                        <h:outputText value="#{saradniciController.selected.mestorodjenjaclana}" title="#{bundle.ViewSaradniciTitle_mestorodjenjaclana}"/>
+                        <h:outputText value="KONTAKT"/>
+                        <h:outputText value="#{saradniciController.selected.kontaktclana}" title="#{bundle.ViewSaradniciTitle_kontaktclana}"/>
+                        <h:outputText value="VISINA(CM)"/>
+                        <h:outputText value="#{saradniciController.selected.visinaclana}" title="#{bundle.ViewSaradniciTitle_visinaclana}"/>
+                        <h:outputText value="KILAZA(KG)"/>
+                        <h:outputText value="#{saradniciController.selected.kilazaclana}" title="#{bundle.ViewSaradniciTitle_kilazaclana}"/>
+                        <h:outputText value="BOJA OCIU"/>
+                        <h:outputText value="#{saradniciController.selected.bojaociuclana}" title="#{bundle.ViewSaradniciTitle_bojaociuclana}"/>
+                        <h:outputText value="STATUS"/>
+                        <h:outputText value="#{saradniciController.selected.statusclana}" title="#{bundle.ViewSaradniciTitle_statusclana}"/>
+                        <h:outputText value="PLATA"/>
+                        <h:outputText value="#{saradniciController.selected.plataclana}" title="#{bundle.ViewSaradniciTitle_plataclana}"/>
+                        <h:outputText value="ID SARADNIKA"/>
+                        <h:outputText value="#{saradniciController.selected.idsaradnika}" title="#{bundle.ViewSaradniciTitle_idsaradnika}"/>
+                        <h:outputText value="#{bundle.ViewSaradniciLabel_oblast}"/>
+                        <h:outputText value="#{saradniciController.selected.oblast}" title="#{bundle.ViewSaradniciTitle_oblast}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="SaradniciViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

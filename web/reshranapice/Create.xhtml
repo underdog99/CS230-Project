@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReshranapiceCreateDlg" widgetVar="ReshranapiceCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateReshranapiceTitle}">
+            <h:form id="ReshranapiceCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reshranapiceController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateReshranapiceLabel_idhranapice}" for="idhranapice" />
+                        <p:inputText id="idhranapice" value="#{reshranapiceController.selected.idhranapice}" title="#{bundle.CreateReshranapiceTitle_idhranapice}" required="true" requiredMessage="#{bundle.CreateReshranapiceRequiredMessage_idhranapice}"/>
+                        <p:outputLabel value="#{bundle.CreateReshranapiceLabel_nazivhranapice}" for="nazivhranapice" />
+                        <p:inputTextarea rows="4" cols="30" id="nazivhranapice" value="#{reshranapiceController.selected.nazivhranapice}" title="#{bundle.CreateReshranapiceTitle_nazivhranapice}" />
+                        <p:outputLabel value="#{bundle.CreateReshranapiceLabel_tiphranapice}" for="tiphranapice" />
+                        <p:inputTextarea rows="4" cols="30" id="tiphranapice" value="#{reshranapiceController.selected.tiphranapice}" title="#{bundle.CreateReshranapiceTitle_tiphranapice}" />
+                        <p:outputLabel value="#{bundle.CreateReshranapiceLabel_opishranapice}" for="opishranapice" />
+                        <p:inputTextarea rows="4" cols="30" id="opishranapice" value="#{reshranapiceController.selected.opishranapice}" title="#{bundle.CreateReshranapiceTitle_opishranapice}" />
+                        <p:outputLabel value="#{bundle.CreateReshranapiceLabel_prioritethranapice}" for="prioritethranapice" />
+                        <p:inputText id="prioritethranapice" value="#{reshranapiceController.selected.prioritethranapice}" title="#{bundle.CreateReshranapiceTitle_prioritethranapice}" />
+                        <p:outputLabel value="#{bundle.CreateReshranapiceLabel_trosakhranapice}" for="trosakhranapice" />
+                        <p:inputText id="trosakhranapice" value="#{reshranapiceController.selected.trosakhranapice}" title="#{bundle.CreateReshranapiceTitle_trosakhranapice}" />
+                        <p:outputLabel value="#{bundle.CreateReshranapiceLabel_isplatljivosthranapice}" for="isplatljivosthranapice" />
+                        <p:inputText id="isplatljivosthranapice" value="#{reshranapiceController.selected.isplatljivosthranapice}" title="#{bundle.CreateReshranapiceTitle_isplatljivosthranapice}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reshranapiceController.create}" value="#{bundle.Save}" update="display,:ReshranapiceListForm:datalist,:growl" oncomplete="handleSubmit(args,'ReshranapiceCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReshranapiceCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MedresursViewDlg" widgetVar="MedresursViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMedresursTitle}">
+            <h:form id="MedresursViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{medresursController.selected != null}">
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{medresursController.selected.idmedres}" title="#{bundle.ViewMedresursTitle_idmedres}"/>
+                        <h:outputText value="NAZIV"/>
+                        <h:outputText value="#{medresursController.selected.nazivmedres}" title="#{bundle.ViewMedresursTitle_nazivmedres}"/>
+                        <h:outputText value="TIP"/>
+                        <h:outputText value="#{medresursController.selected.tipmedres}" title="#{bundle.ViewMedresursTitle_tipmedres}"/>
+                        <h:outputText value="TROSAK"/>
+                        <h:outputText value="#{medresursController.selected.trosakmedres}" title="#{bundle.ViewMedresursTitle_trosakmedres}"/>
+                        <h:outputText value="PRIORITET"/>
+                        <h:outputText value="#{medresursController.selected.prioritetmedres}" title="#{bundle.ViewMedresursTitle_prioritetmedres}"/>
+                        <h:outputText value="ISPLATLJIVOST"/>
+                        <h:outputText value="#{medresursController.selected.isplatljivostmedres}" title="#{bundle.ViewMedresursTitle_isplatljivostmedres}"/>
+                        <h:outputText value="OPIS"/>
+                        <h:outputText value="#{medresursController.selected.opismedres}" title="#{bundle.ViewMedresursTitle_opismedres}"/>
+                        <h:outputText value="SLIKA"/>
+                        <h:outputText value="#{medresursController.selected.slikamedres}" title="#{bundle.ViewMedresursTitle_slikamedres}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MedresursViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

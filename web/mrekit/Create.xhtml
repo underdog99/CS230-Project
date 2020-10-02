@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MrekitCreateDlg" widgetVar="MrekitCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMrekitTitle}">
+            <h:form id="MrekitCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mrekitController.selected != null}">
+                        <p:outputLabel value="ID" for="idmre" />
+                        <p:inputText id="idmre" value="#{mrekitController.selected.idmre}" title="#{bundle.CreateMrekitTitle_idmre}" required="true" requiredMessage="#{bundle.CreateMrekitRequiredMessage_idmre}"/>
+                        <p:outputLabel value="NAZIV" for="nazivmre" />
+                        <p:inputText id="nazivmre" value="#{mrekitController.selected.nazivmre}" title="#{bundle.CreateMrekitTitle_nazivmre}" />
+                        <p:outputLabel value="SASTOJCI" for="sastojicimre" />
+                        <p:inputTextarea rows="4" cols="30" id="sastojicimre" value="#{mrekitController.selected.sastojicimre}" title="#{bundle.CreateMrekitTitle_sastojicimre}" />
+                        <p:outputLabel value="PRIORITET" for="prioritetmre" />
+                        <p:inputText id="prioritetmre" value="#{mrekitController.selected.prioritetmre}" title="#{bundle.CreateMrekitTitle_prioritetmre}" />
+                        <p:outputLabel value="GODISNJI TROSAK" for="godisnjitrosak" />
+                        <p:inputText id="godisnjitrosak" value="#{mrekitController.selected.godisnjitrosak}" title="#{bundle.CreateMrekitTitle_godisnjitrosak}" />
+                        <p:outputLabel value="ISPLATLJIVOST" for="isplatljivostmre" />
+                        <p:inputText id="isplatljivostmre" value="#{mrekitController.selected.isplatljivostmre}" title="#{bundle.CreateMrekitTitle_isplatljivostmre}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{mrekitController.create}" value="#{bundle.Save}" update="display,:MrekitListForm:datalist,:growl" oncomplete="handleSubmit(args,'MrekitCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MrekitCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

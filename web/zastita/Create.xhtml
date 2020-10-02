@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NaoruzanjeCreateDlg" widgetVar="NaoruzanjeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateNaoruzanjeTitle}">
+            <h:form id="NaoruzanjeCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{naoruzanjeController.selected != null}">
+                        <p:outputLabel value="ID" for="idnaoruzanja" />
+                        <p:inputText id="idnaoruzanja" value="#{naoruzanjeController.selected.idnaoruzanja}" title="#{bundle.CreateNaoruzanjeTitle_idnaoruzanja}" required="true" requiredMessage="#{bundle.CreateNaoruzanjeRequiredMessage_idnaoruzanja}"/>
+                        <p:outputLabel value="MODLE" for="modelnaoruzanja" />
+                        <p:inputText id="modelnaoruzanja" value="#{naoruzanjeController.selected.modelnaoruzanja}" title="#{bundle.CreateNaoruzanjeTitle_modelnaoruzanja}" />
+                        <p:outputLabel value="MARKA" for="markanaoruzanja" />
+                        <p:inputText id="markanaoruzanja" value="#{naoruzanjeController.selected.markanaoruzanja}" title="#{bundle.CreateNaoruzanjeTitle_markanaoruzanja}" />
+                        <p:outputLabel value="KALIBAR" for="kalibarnaoruzanja" />
+                        <p:inputText id="kalibarnaoruzanja" value="#{naoruzanjeController.selected.kalibarnaoruzanja}" title="#{bundle.CreateNaoruzanjeTitle_kalibarnaoruzanja}" />
+                        <p:outputLabel value="TIP" for="tipnaoruzanja" />
+                        <p:inputText id="tipnaoruzanja" value="#{naoruzanjeController.selected.tipnaoruzanja}" title="#{bundle.CreateNaoruzanjeTitle_tipnaoruzanja}" />
+                        <p:outputLabel value="OPIS" for="opisnaoruzanja" />
+                        <p:inputTextarea rows="4" cols="30" id="opisnaoruzanja" value="#{naoruzanjeController.selected.opisnaoruzanja}" title="#{bundle.CreateNaoruzanjeTitle_opisnaoruzanja}" />
+                        <p:outputLabel value="PRIORITET" for="prioritetnaoruzanja" />
+                        <p:inputText id="prioritetnaoruzanja" value="#{naoruzanjeController.selected.prioritetnaoruzanja}" title="#{bundle.CreateNaoruzanjeTitle_prioritetnaoruzanja}" />
+                        <p:outputLabel value="TROSAK" for="trosaknaoruzanja" />
+                        <p:inputText id="trosaknaoruzanja" value="#{naoruzanjeController.selected.trosaknaoruzanja}" title="#{bundle.CreateNaoruzanjeTitle_trosaknaoruzanja}" />
+                        <p:outputLabel value="ISPLATLJIVOST" for="isplatljivostnaoruzanja" />
+                        <p:inputText id="isplatljivostnaoruzanja" value="#{naoruzanjeController.selected.isplatljivostnaoruzanja}" title="#{bundle.CreateNaoruzanjeTitle_isplatljivostnaoruzanja}" />
+                        <p:outputLabel value="SLIKA" for="slikanaoruzanja" />
+                        <p:inputText id="slikanaoruzanja" value="#{naoruzanjeController.selected.slikanaoruzanja}" title="#{bundle.CreateNaoruzanjeTitle_slikanaoruzanja}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{naoruzanjeController.create}" value="#{bundle.Save}" update="display,:NaoruzanjeListForm:datalist,:growl" oncomplete="handleSubmit(args,'NaoruzanjeCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="NaoruzanjeCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

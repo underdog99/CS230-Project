@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="KolicinaViewDlg" widgetVar="KolicinaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewKolicinaTitle}">
+            <h:form id="KolicinaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{kolicinaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewKolicinaLabel_idkolicina}"/>
+                        <h:outputText value="#{kolicinaController.selected.idkolicina}" title="#{bundle.ViewKolicinaTitle_idkolicina}"/>
+                        <h:outputText value="#{bundle.ViewKolicinaLabel_cegakolicina}"/>
+                        <h:outputText value="#{kolicinaController.selected.cegakolicina}" title="#{bundle.ViewKolicinaTitle_cegakolicina}"/>
+                        <h:outputText value="#{bundle.ViewKolicinaLabel_kolikokolicina}"/>
+                        <h:outputText value="#{kolicinaController.selected.kolikokolicina}" title="#{bundle.ViewKolicinaTitle_kolikokolicina}"/>
+                        <h:outputText value="#{bundle.ViewKolicinaLabel_idkasarna}"/>
+                        <h:outputText value="#{kolicinaController.selected.idkasarna}" title="#{bundle.ViewKolicinaTitle_idkasarna}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="KolicinaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

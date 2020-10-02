@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VazdusnovoziloViewDlg" widgetVar="VazdusnovoziloViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewVazdusnovoziloTitle}">
+            <h:form id="VazdusnovoziloViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vazdusnovoziloController.selected != null}">
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.vazdusnovoziloPK.idvozilo}" title="#{bundle.ViewVazdusnovoziloTitle_vazdusnovoziloPK_idvozilo}"/>
+                        <h:outputText value="ID VOZILA"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.vazdusnovoziloPK.idvazvozila}" title="#{bundle.ViewVazdusnovoziloTitle_vazdusnovoziloPK_idvazvozila}"/>
+                        <h:outputText value="MARKA"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.markavozila}" title="#{bundle.ViewVazdusnovoziloTitle_markavozila}"/>
+                        <h:outputText value="MODEL"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.modelvozilo}" title="#{bundle.ViewVazdusnovoziloTitle_modelvozilo}"/>
+                        <h:outputText value="SLIKA"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.slikavozilo}" title="#{bundle.ViewVazdusnovoziloTitle_slikavozilo}"/>
+                        <h:outputText value="TROSAK SERVISA"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.trosakservisa}" title="#{bundle.ViewVazdusnovoziloTitle_trosakservisa}"/>
+                        <h:outputText value="PRIORITET"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.prioritetvozila}" title="#{bundle.ViewVazdusnovoziloTitle_prioritetvozila}"/>
+                        <h:outputText value="OPIS"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.opisvozila}" title="#{bundle.ViewVazdusnovoziloTitle_opisvozila}"/>
+                        <h:outputText value="TROSAK GORIVA"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.trosakgoriva}" title="#{bundle.ViewVazdusnovoziloTitle_trosakgoriva}"/>
+                        <h:outputText value="ISPLATLJIVOST"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.isplatljivostvozila}" title="#{bundle.ViewVazdusnovoziloTitle_isplatljivostvozila}"/>
+                        <h:outputText value="BR. MOTORA"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.brmotoravazvozila}" title="#{bundle.ViewVazdusnovoziloTitle_brmotoravazvozila}"/>
+                        <h:outputText value="SNAGA MOTORA"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.snagamotora}" title="#{bundle.ViewVazdusnovoziloTitle_snagamotora}"/>
+                        <h:outputText value="MODEL MOTORA"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.modelmotora}" title="#{bundle.ViewVazdusnovoziloTitle_modelmotora}"/>
+                        <h:outputText value="KAPACITET"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.kapacitetvazvozila}" title="#{bundle.ViewVazdusnovoziloTitle_kapacitetvazvozila}"/>
+                        <h:outputText value="TIP VOZILA"/>
+                        <h:outputText value="#{vazdusnovoziloController.selected.tipvazvozila}" title="#{bundle.ViewVazdusnovoziloTitle_tipvazvozila}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="VazdusnovoziloViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

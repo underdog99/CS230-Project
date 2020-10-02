@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SaradniciEditDlg" widgetVar="SaradniciEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditSaradniciTitle}">
+            <h:form id="SaradniciEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{saradniciController.selected != null}">
+                        <p:outputLabel value="ID" for="idclana" />
+                        <p:inputText id="idclana" value="#{saradniciController.selected.idclana}" title="#{bundle.EditSaradniciTitle_idclana}" required="true" requiredMessage="#{bundle.EditSaradniciRequiredMessage_idclana}"/>
+                        <p:outputLabel value="IME" for="imeclana" />
+                        <p:inputText id="imeclana" value="#{saradniciController.selected.imeclana}" title="#{bundle.EditSaradniciTitle_imeclana}" />
+                        <p:outputLabel value="PREZIME" for="prezimeclana" />
+                        <p:inputText id="prezimeclana" value="#{saradniciController.selected.prezimeclana}" title="#{bundle.EditSaradniciTitle_prezimeclana}" />
+                        <p:outputLabel value="JMBG" for="jmbgclana" />
+                        <p:inputText id="jmbgclana" value="#{saradniciController.selected.jmbgclana}" title="#{bundle.EditSaradniciTitle_jmbgclana}" />
+                        <p:outputLabel value="GODINA RODJENJA" for="godinarodjenjaclana" />
+                        <p:calendar id="godinarodjenjaclana" pattern="MM/dd/yyyy" value="#{saradniciController.selected.godinarodjenjaclana}" title="#{bundle.EditSaradniciTitle_godinarodjenjaclana}"  showOn="button"/>
+                        <p:outputLabel value="MESTO RODJENJA" for="mestorodjenjaclana" />
+                        <p:inputText id="mestorodjenjaclana" value="#{saradniciController.selected.mestorodjenjaclana}" title="#{bundle.EditSaradniciTitle_mestorodjenjaclana}" />
+                        <p:outputLabel value="KONTAKT" for="kontaktclana" />
+                        <p:inputText id="kontaktclana" value="#{saradniciController.selected.kontaktclana}" title="#{bundle.EditSaradniciTitle_kontaktclana}" />
+                        <p:outputLabel value="VISINA(CM)" for="visinaclana" />
+                        <p:inputText id="visinaclana" value="#{saradniciController.selected.visinaclana}" title="#{bundle.EditSaradniciTitle_visinaclana}" />
+                        <p:outputLabel value="KILAZA(KG)" for="kilazaclana" />
+                        <p:inputText id="kilazaclana" value="#{saradniciController.selected.kilazaclana}" title="#{bundle.EditSaradniciTitle_kilazaclana}" />
+                        <p:outputLabel value="BOJA OCIU" for="bojaociuclana" />
+                        <p:inputText id="bojaociuclana" value="#{saradniciController.selected.bojaociuclana}" title="#{bundle.EditSaradniciTitle_bojaociuclana}" />
+                        <p:outputLabel value="FOTO" for="fotoclana" />
+                        <p:inputText id="fotoclana" value="#{saradniciController.selected.fotoclana}" title="#{bundle.EditSaradniciTitle_fotoclana}" />
+                        <p:outputLabel value="OTISAK" for="otisakprstaclana" />
+                        <p:inputText id="otisakprstaclana" value="#{saradniciController.selected.otisakprstaclana}" title="#{bundle.EditSaradniciTitle_otisakprstaclana}" />
+                        <p:outputLabel value="STATUS" for="statusclana" />
+                        <p:inputText id="statusclana" value="#{saradniciController.selected.statusclana}" title="#{bundle.EditSaradniciTitle_statusclana}" />
+                        <p:outputLabel value="PLATA" for="plataclana" />
+                        <p:inputText id="plataclana" value="#{saradniciController.selected.plataclana}" title="#{bundle.EditSaradniciTitle_plataclana}" />
+                        <p:outputLabel value="ID SARADNIKA" for="idsaradnika" />
+                        <p:inputText id="idsaradnika" value="#{saradniciController.selected.idsaradnika}" title="#{bundle.EditSaradniciTitle_idsaradnika}" />
+                        <p:outputLabel value="OBLAST" for="oblast" />
+                        <p:inputText id="oblast" value="#{saradniciController.selected.oblast}" title="#{bundle.EditSaradniciTitle_oblast}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{saradniciController.update}" value="#{bundle.Save}" update="display,:SaradniciListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SaradniciEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SaradniciEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

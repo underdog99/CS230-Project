@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MedresursCreateDlg" widgetVar="MedresursCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMedresursTitle}">
+            <h:form id="MedresursCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{medresursController.selected != null}">
+                        <p:outputLabel value="ID" for="idmedres" />
+                        <p:inputText id="idmedres" value="#{medresursController.selected.idmedres}" title="#{bundle.CreateMedresursTitle_idmedres}" required="true" requiredMessage="#{bundle.CreateMedresursRequiredMessage_idmedres}"/>
+                        <p:outputLabel value="NAZIV" for="nazivmedres" />
+                        <p:inputText id="nazivmedres" value="#{medresursController.selected.nazivmedres}" title="#{bundle.CreateMedresursTitle_nazivmedres}" />
+                        <p:outputLabel value="TIP" for="tipmedres" />
+                        <p:inputText id="tipmedres" value="#{medresursController.selected.tipmedres}" title="#{bundle.CreateMedresursTitle_tipmedres}" />
+                        <p:outputLabel value="TROSAK" for="trosakmedres" />
+                        <p:inputText id="trosakmedres" value="#{medresursController.selected.trosakmedres}" title="#{bundle.CreateMedresursTitle_trosakmedres}" />
+                        <p:outputLabel value="PRIORITET" for="prioritetmedres" />
+                        <p:inputText id="prioritetmedres" value="#{medresursController.selected.prioritetmedres}" title="#{bundle.CreateMedresursTitle_prioritetmedres}" />
+                        <p:outputLabel value="ISPLATLJIVOST" for="isplatljivostmedres" />
+                        <p:inputText id="isplatljivostmedres" value="#{medresursController.selected.isplatljivostmedres}" title="#{bundle.CreateMedresursTitle_isplatljivostmedres}" />
+                        <p:outputLabel value="OPIS" for="opismedres" />
+                        <p:inputTextarea rows="4" cols="30" id="opismedres" value="#{medresursController.selected.opismedres}" title="#{bundle.CreateMedresursTitle_opismedres}" />
+                        <p:outputLabel value="SLIKA" for="slikamedres" />
+                        <p:inputText id="slikamedres" value="#{medresursController.selected.slikamedres}" title="#{bundle.CreateMedresursTitle_slikamedres}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{medresursController.create}" value="#{bundle.Save}" update="display,:MedresursListForm:datalist,:growl" oncomplete="handleSubmit(args,'MedresursCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MedresursCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

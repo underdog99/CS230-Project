@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListKopnenovoziloTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="KopnenovoziloListForm">
+                <p:panel header="#{bundle.ListKopnenovoziloTitle}">
+                    <p:dataTable id="datalist" value="#{kopnenovoziloController.items}" var="item"
+                                 selectionMode="single" selection="#{kopnenovoziloController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idkopnenovozilo}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idkopnenovozilo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="MARKA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.markavozila}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="MODEL"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modelvozilo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="SLIKA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.slikavozilo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="TROSKOVI"/>
+                            </f:facet>
+                            <h:outputText value="#{item.trosakservisa}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="PRIORITET"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prioritetvozila}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="OPIS"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opisvozila}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="TROSAK GORIVA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.trosakgoriva}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ISPLATLJIVOST"/>
+                            </f:facet>
+                            <h:outputText value="#{item.isplatljivostvozila}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="TIP VOZILA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipvozila}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="TIP MOTORA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipmotora}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="KS"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kskopnenogvozila}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="CC"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cckopnenogvozila}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="REG. BR."/>
+                            </f:facet>
+                            <h:outputText value="#{item.regbrvozila}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{kopnenovoziloController.prepareCreate}" update=":KopnenovoziloCreateForm" oncomplete="PF('KopnenovoziloCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":KopnenovoziloViewForm" oncomplete="PF('KopnenovoziloViewDialog').show()" disabled="#{empty kopnenovoziloController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":KopnenovoziloEditForm" oncomplete="PF('KopnenovoziloEditDialog').show()" disabled="#{empty kopnenovoziloController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{kopnenovoziloController.destroy}" update=":growl,datalist" disabled="#{empty kopnenovoziloController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

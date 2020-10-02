@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UnutranViewDlg" widgetVar="UnutranViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewUnutranTitle}">
+            <h:form id="UnutranViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{unutranController.selected != null}">
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{unutranController.selected.idunutran}" title="#{bundle.ViewUnutranTitle_idunutran}"/>
+                        <h:outputText value="NAZIV"/>
+                        <h:outputText value="#{unutranController.selected.nazivunutran}" title="#{bundle.ViewUnutranTitle_nazivunutran}"/>
+                        <h:outputText value="OD"/>
+                        <h:outputText value="#{unutranController.selected.odunutra}" title="#{bundle.ViewUnutranTitle_odunutra}"/>
+                        <h:outputText value="DO"/>
+                        <h:outputText value="#{unutranController.selected.dounutra}" title="#{bundle.ViewUnutranTitle_dounutra}"/>
+                        <h:outputText value="SADRZAJ"/>
+                        <h:outputText value="#{unutranController.selected.staunutran}" title="#{bundle.ViewUnutranTitle_staunutran}"/>
+                        <h:outputText value="KOLICINA"/>
+                        <h:outputText value="#{unutranController.selected.kolicinaunutran}" title="#{bundle.ViewUnutranTitle_kolicinaunutran}"/>
+                        <h:outputText value="TROSAK"/>
+                        <h:outputText value="#{unutranController.selected.trosakunutran}" title="#{bundle.ViewUnutranTitle_trosakunutran}"/>
+                        <h:outputText value="PRIORITET"/>
+                        <h:outputText value="#{unutranController.selected.prioritetunutran}" title="#{bundle.ViewUnutranTitle_prioritetunutran}"/>
+                        <h:outputText value="ISPLATLJIVOST"/>
+                        <h:outputText value="#{unutranController.selected.isplatljivostunutran}" title="#{bundle.ViewUnutranTitle_isplatljivostunutran}"/>
+                        <h:outputText value="KREIRANJE TRANSF."/>
+                        <h:outputText value="#{unutranController.selected.kreiranjeunutran}" title="#{bundle.ViewUnutranTitle_kreiranjeunutran}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewUnutranLabel_datumisporucivanjaunutran}"/>
+                        <h:outputText value="#{unutranController.selected.datumisporucivanjaunutran}" title="#{bundle.ViewUnutranTitle_datumisporucivanjaunutran}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="STATUS"/>
+                        <h:outputText value="#{unutranController.selected.statusunutran}" title="#{bundle.ViewUnutranTitle_statusunutran}"/>
+                        <h:outputText value="KASARNA"/>
+                        <h:outputText value="#{unutranController.selected.idkasarna}" title="#{bundle.ViewUnutranTitle_idkasarna}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="UnutranViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="KopnenovoziloEditDlg" widgetVar="KopnenovoziloEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditKopnenovoziloTitle}">
+            <h:form id="KopnenovoziloEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{kopnenovoziloController.selected != null}">
+                        <p:outputLabel value="ID" for="idkopnenovozilo" />
+                        <p:inputText id="idkopnenovozilo" value="#{kopnenovoziloController.selected.idkopnenovozilo}" title="#{bundle.EditKopnenovoziloTitle_idkopnenovozilo}" required="true" requiredMessage="#{bundle.EditKopnenovoziloRequiredMessage_idkopnenovozilo}"/>
+                        <p:outputLabel value="MARKA VOZILA" for="markavozila" />
+                        <p:inputText id="markavozila" value="#{kopnenovoziloController.selected.markavozila}" title="#{bundle.EditKopnenovoziloTitle_markavozila}" />
+                        <p:outputLabel value="MODEL" for="modelvozilo" />
+                        <p:inputText id="modelvozilo" value="#{kopnenovoziloController.selected.modelvozilo}" title="#{bundle.EditKopnenovoziloTitle_modelvozilo}" />
+                        <p:outputLabel value="SLIKA" for="slikavozilo" />
+                        <p:inputText id="slikavozilo" value="#{kopnenovoziloController.selected.slikavozilo}" title="#{bundle.EditKopnenovoziloTitle_slikavozilo}" />
+                        <p:outputLabel value="TROSAK SERVISA" for="trosakservisa" />
+                        <p:inputText id="trosakservisa" value="#{kopnenovoziloController.selected.trosakservisa}" title="#{bundle.EditKopnenovoziloTitle_trosakservisa}" />
+                        <p:outputLabel value="PRIORITET" for="prioritetvozila" />
+                        <p:inputText id="prioritetvozila" value="#{kopnenovoziloController.selected.prioritetvozila}" title="#{bundle.EditKopnenovoziloTitle_prioritetvozila}" />
+                        <p:outputLabel value="OPIS" for="opisvozila" />
+                        <p:inputTextarea rows="4" cols="30" id="opisvozila" value="#{kopnenovoziloController.selected.opisvozila}" title="#{bundle.EditKopnenovoziloTitle_opisvozila}" />
+                        <p:outputLabel value="TROSAK GORIVA" for="trosakgoriva" />
+                        <p:inputText id="trosakgoriva" value="#{kopnenovoziloController.selected.trosakgoriva}" title="#{bundle.EditKopnenovoziloTitle_trosakgoriva}" />
+                        <p:outputLabel value="ISPLATLJIVOST" for="isplatljivostvozila" />
+                        <p:inputText id="isplatljivostvozila" value="#{kopnenovoziloController.selected.isplatljivostvozila}" title="#{bundle.EditKopnenovoziloTitle_isplatljivostvozila}" />
+                        <p:outputLabel value="TIP VOZILA" for="tipvozila" />
+                        <p:inputText id="tipvozila" value="#{kopnenovoziloController.selected.tipvozila}" title="#{bundle.EditKopnenovoziloTitle_tipvozila}" />
+                        <p:outputLabel value="TIP MOTORA" for="tipmotora" />
+                        <p:inputText id="tipmotora" value="#{kopnenovoziloController.selected.tipmotora}" title="#{bundle.EditKopnenovoziloTitle_tipmotora}" />
+                        <p:outputLabel value="KS" for="kskopnenogvozila" />
+                        <p:inputText id="kskopnenogvozila" value="#{kopnenovoziloController.selected.kskopnenogvozila}" title="#{bundle.EditKopnenovoziloTitle_kskopnenogvozila}" />
+                        <p:outputLabel value="CC" for="cckopnenogvozila" />
+                        <p:inputText id="cckopnenogvozila" value="#{kopnenovoziloController.selected.cckopnenogvozila}" title="#{bundle.EditKopnenovoziloTitle_cckopnenogvozila}" />
+                        <p:outputLabel value="REG. BR." for="regbrvozila" />
+                        <p:inputText id="regbrvozila" value="#{kopnenovoziloController.selected.regbrvozila}" title="#{bundle.EditKopnenovoziloTitle_regbrvozila}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{kopnenovoziloController.update}" value="#{bundle.Save}" update="display,:KopnenovoziloListForm:datalist,:growl" oncomplete="handleSubmit(args, 'KopnenovoziloEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="KopnenovoziloEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

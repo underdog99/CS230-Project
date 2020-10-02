@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Login</title>
+                <h:outputStylesheet name="css/jsfcrud.css"/>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <h2 align="center">Aplikacija za upravljanje vojnih resursa</h2>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    <h4 align="center">CS230-PZ-2020 Mladen Simeonovic 3668</h4>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <div align="center">
+                        <p:graphicImage url="res/logo.png" width="300" height="300"/>
+                        <h:form>
+                            <p:panelGrid columns="1">
+                                <p:messages/>
+                                <p:outputLabel value="Korisnicko ime" for="ki"/>
+                                <p:inputText id="ki" label="Ki" value="#{prijava.username}" required="true">   
+                                    <f:validator validatorId="usernameValidator"/>
+                                </p:inputText>
+                                <p:outputLabel value="Lozinka" for="pass"/>
+                                <p:inputText id="pass" type="password" label="Pass" value="#{prijava.password}" required="true">   
+                                    <!--  <f:validator validatorId="#"/> -->
+                                </p:inputText>
+                                <p:commandButton value="Log in" action="#{prijava.login()}" ajax="false"/>
+                            </p:panelGrid>
+                        </h:form> 
+                    </div>    
+                </p:layoutUnit>
+
+            </p:layout>
+        </h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </f:view>
+</html>
+

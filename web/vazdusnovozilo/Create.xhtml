@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VazdusnovoziloCreateDlg" widgetVar="VazdusnovoziloCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateVazdusnovoziloTitle}">
+            <h:form id="VazdusnovoziloCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vazdusnovoziloController.selected != null}">
+                        <p:outputLabel value="ID" for="vazdusnovoziloPK_idvozilo" />
+                        <p:inputText id="vazdusnovoziloPK_idvozilo" value="#{vazdusnovoziloController.selected.vazdusnovoziloPK.idvozilo}" title="#{bundle.CreateVazdusnovoziloTitle_vazdusnovoziloPK_idvozilo}" required="true" requiredMessage="#{bundle.CreateVazdusnovoziloRequiredMessage_vazdusnovoziloPK_idvozilo}"/>
+                        <p:outputLabel value="ID VOZILA" for="vazdusnovoziloPK_idvazvozila" />
+                        <p:inputText id="vazdusnovoziloPK_idvazvozila" value="#{vazdusnovoziloController.selected.vazdusnovoziloPK.idvazvozila}" title="#{bundle.CreateVazdusnovoziloTitle_vazdusnovoziloPK_idvazvozila}" required="true" requiredMessage="#{bundle.CreateVazdusnovoziloRequiredMessage_vazdusnovoziloPK_idvazvozila}"/>
+                        <p:outputLabel value="MARKA" for="markavozila" />
+                        <p:inputText id="markavozila" value="#{vazdusnovoziloController.selected.markavozila}" title="#{bundle.CreateVazdusnovoziloTitle_markavozila}" />
+                        <p:outputLabel value="MODEL" for="modelvozilo" />
+                        <p:inputText id="modelvozilo" value="#{vazdusnovoziloController.selected.modelvozilo}" title="#{bundle.CreateVazdusnovoziloTitle_modelvozilo}" />
+                        <p:outputLabel value="SLIKA" for="slikavozilo" />
+                        <p:inputText id="slikavozilo" value="#{vazdusnovoziloController.selected.slikavozilo}" title="#{bundle.CreateVazdusnovoziloTitle_slikavozilo}" />
+                        <p:outputLabel value="TROSAK SERVISA" for="trosakservisa" />
+                        <p:inputText id="trosakservisa" value="#{vazdusnovoziloController.selected.trosakservisa}" title="#{bundle.CreateVazdusnovoziloTitle_trosakservisa}" />
+                        <p:outputLabel value="PRIORITET" for="prioritetvozila" />
+                        <p:inputText id="prioritetvozila" value="#{vazdusnovoziloController.selected.prioritetvozila}" title="#{bundle.CreateVazdusnovoziloTitle_prioritetvozila}" />
+                        <p:outputLabel value="OPIS" for="opisvozila" />
+                        <p:inputTextarea rows="4" cols="30" id="opisvozila" value="#{vazdusnovoziloController.selected.opisvozila}" title="#{bundle.CreateVazdusnovoziloTitle_opisvozila}" />
+                        <p:outputLabel value="TROSAK GORIVA" for="trosakgoriva" />
+                        <p:inputText id="trosakgoriva" value="#{vazdusnovoziloController.selected.trosakgoriva}" title="#{bundle.CreateVazdusnovoziloTitle_trosakgoriva}" />
+                        <p:outputLabel value="ISPLATLJIVOST" for="isplatljivostvozila" />
+                        <p:inputText id="isplatljivostvozila" value="#{vazdusnovoziloController.selected.isplatljivostvozila}" title="#{bundle.CreateVazdusnovoziloTitle_isplatljivostvozila}" />
+                        <p:outputLabel value="BR. MOTORA" for="brmotoravazvozila" />
+                        <p:inputText id="brmotoravazvozila" value="#{vazdusnovoziloController.selected.brmotoravazvozila}" title="#{bundle.CreateVazdusnovoziloTitle_brmotoravazvozila}" />
+                        <p:outputLabel value="SNAGA MOTORA" for="snagamotora" />
+                        <p:inputText id="snagamotora" value="#{vazdusnovoziloController.selected.snagamotora}" title="#{bundle.CreateVazdusnovoziloTitle_snagamotora}" />
+                        <p:outputLabel value="MODEL MOTORA" for="modelmotora" />
+                        <p:inputText id="modelmotora" value="#{vazdusnovoziloController.selected.modelmotora}" title="#{bundle.CreateVazdusnovoziloTitle_modelmotora}" />
+                        <p:outputLabel value="KAPACITET" for="kapacitetvazvozila" />
+                        <p:inputText id="kapacitetvazvozila" value="#{vazdusnovoziloController.selected.kapacitetvazvozila}" title="#{bundle.CreateVazdusnovoziloTitle_kapacitetvazvozila}" />
+                        <p:outputLabel value="TIP VOZILA" for="tipvazvozila" />
+                        <p:inputText id="tipvazvozila" value="#{vazdusnovoziloController.selected.tipvazvozila}" title="#{bundle.CreateVazdusnovoziloTitle_tipvazvozila}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{vazdusnovoziloController.create}" value="#{bundle.Save}" update="display,:VazdusnovoziloListForm:datalist,:growl" oncomplete="handleSubmit(args,'VazdusnovoziloCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VazdusnovoziloCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

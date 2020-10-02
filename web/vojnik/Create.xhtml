@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VojnikCreateDlg" widgetVar="VojnikCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateVojnikTitle}">
+            <h:form id="VojnikCreateForm"  >
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vojnikController.selected != null}">
+                        <p:outputLabel value="ID" for="idvojnika" />
+                        <p:inputText id="idvojnika" value="#{vojnikController.selected.idvojnika}" title="#{bundle.CreateVojnikTitle_idvojnika}" required="true" requiredMessage="#{bundle.CreateVojnikRequiredMessage_idvojnika}"/>
+                        <p:outputLabel value="IME" for="imeclana" />
+                        <p:inputText id="imeclana" value="#{vojnikController.selected.imeclana}" title="#{bundle.CreateVojnikTitle_imeclana}" />
+                        <p:outputLabel value="PREZIME" for="prezimeclana" />
+                        <p:inputText  id="prezimeclana" value="#{vojnikController.selected.prezimeclana}" title="#{bundle.CreateVojnikTitle_prezimeclana}" />
+                        <p:outputLabel value="JMBG" for="jmbgclana" />
+                        <p:inputText id="jmbgclana" value="#{vojnikController.selected.jmbgclana}" title="#{bundle.CreateVojnikTitle_jmbgclana}" />
+                        <p:outputLabel value="GODINA RODJENJA" for="godinarodjenjaclana" />
+                        <p:calendar id="godinarodjenjaclana" pattern="MM/dd/yyyy" value="#{vojnikController.selected.godinarodjenjaclana}" title="#{bundle.EditVojnikTitle_godinarodjenjaclana}"  showOn="button"/>
+                        <p:outputLabel value="MESTO RODJANJA" for="mestorodjenjaclana" />
+                        <p:inputText id="mestorodjenjaclana" value="#{vojnikController.selected.mestorodjenjaclana}" title="#{bundle.CreateVojnikTitle_mestorodjenjaclana}" />
+                        <p:outputLabel value="KONTAKT" for="kontaktclana" />
+                        <p:inputText id="kontaktclana" value="#{vojnikController.selected.kontaktclana}" title="#{bundle.CreateVojnikTitle_kontaktclana}" />
+                        <p:outputLabel value="VISINA (CM)" for="visinaclana" />
+                        <p:inputText id="visinaclana" value="#{vojnikController.selected.visinaclana}" title="#{bundle.CreateVojnikTitle_visinaclana}" />
+                        <p:outputLabel value="KILAZA (KG)" for="kilazaclana" />
+                        <p:inputText id="kilazaclana" value="#{vojnikController.selected.kilazaclana}" title="#{bundle.CreateVojnikTitle_kilazaclana}" />
+                        <p:outputLabel value="BOJA OCIU" for="bojaociuclana" />
+                        <p:inputText id="bojaociuclana" value="#{vojnikController.selected.bojaociuclana}" title="#{bundle.CreateVojnikTitle_bojaociuclana}" />
+                        <p:outputLabel value="STATUS" for="statusclana" />
+                        <p:inputText id="statusclana" value="#{vojnikController.selected.statusclana}" title="#{bundle.CreateVojnikTitle_statusclana}" />
+                        <p:outputLabel value="PLATA" for="plataclana" />
+                        <p:inputText id="plataclana" value="#{vojnikController.selected.plataclana}" title="#{bundle.CreateVojnikTitle_plataclana}" />
+                        <p:outputLabel value="POCETAK SLUZBE" for="pocetaksluzbe" />
+                        <p:calendar id="pocetaksluzbe" pattern="MM/dd/yyyy HH:mm:ss" value="#{vojnikController.selected.pocetaksluzbe}" title="#{bundle.EditVojnikTitle_pocetaksluzbe}" required="true" requiredMessage="#{bundle.EditVojnikRequiredMessage_pocetaksluzbe}" showOn="button"/>
+                        <p:outputLabel value="KRAJ SLUZBE" for="krajsluzbe" />
+                        <p:calendar id="krajsluzbe" pattern="MM/dd/yyyy" value="#{vojnikController.selected.krajsluzbe}" title="#{bundle.EditVojnikTitle_krajsluzbe}"  showOn="button"/>
+                        <p:outputLabel value="CIN" for="idcina" />
+                        <p:selectOneMenu id="idcina" value="#{vojnikController.selected.idcina}" >
+                            <f:selectItems value="#{cinoviController.itemsAvailableSelectOne}"
+                                           var="idcinaItem"
+                                           itemValue="#{idcinaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="JEDINICA" for="idjedinice" />
+                        <p:selectOneMenu id="idjedinice" value="#{vojnikController.selected.idjedinice}" >
+                            <f:selectItems value="#{jedinicaController.itemsAvailableSelectOne}"
+                                           var="idjediniceItem"
+                                           itemValue="#{idjediniceItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="KASARNA" for="idkasarna" />
+                        <p:selectOneMenu id="idkasarna" value="#{vojnikController.selected.idkasarna}" >
+                            <f:selectItems value="#{kasarnaController.itemsAvailableSelectOne}"
+                                           var="idkasarnaItem"
+                                           itemValue="#{idkasarnaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{vojnikController.create}" value="#{bundle.Save}" update="display,:VojnikListForm:datalist,:growl" oncomplete="handleSubmit(args,'VojnikCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VojnikCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+            <hr/>
+            <h:form enctype="multipart/form-data"  prependId="false">
+                <h:outputText value="Unesi ID vojnika "></h:outputText>
+                <h:inputText value="#{vojnikController.idString}" required="true"/>
+                <br/>
+                <h:outputText value="Unesi sliku "></h:outputText>
+                <h:inputFile value="#{vojnikController.upFile1}"/>
+                <br/>
+                <h:outputText value="Unesi otisak prsta "></h:outputText>
+                <h:inputFile value="#{vojnikController.upFile2}"/>
+                <br/>
+                <h:commandButton value="Sacuvaj" type="submit" action="#{vojnikController.uploadSlika()}"/>
+             </h:form>
+            
+        </p:dialog>
+
+    </ui:composition>
+</html>
